@@ -1,2 +1,11 @@
-# basis-data-kelompok-II
-[IND] Ini adalah repository dari kelompok Basis data 2022. Terdiri dari perintah query DDL &amp; DML hingga normalisasinya.
+# Basis Data Kelompok II
+Ini adalah repository dari kelompok 2 Basis Data I B 2022.
+Kumpulan Author nya adalah sebagai berikut :
+- H071211024 MUHAMMAD YUSRAN HARDIMAS SETIAWAN
+- H071211030 MUHAMMAD IKRAM HIDAYAT
+- H071211033 MUHAMMAD AL FUDHAIL
+- H071211040 MUCHTAR ADAM AL-HAMID
+- H071211042 MUH HUDRI PERDANA HUTBA
+- H071211043 HERDIANGGA PRATAMA
+- H071211045 MUHAMMAD SOFYAN DAUD PUJAS
+- H071211047 JIHAN AFIFAH MIRZANI
