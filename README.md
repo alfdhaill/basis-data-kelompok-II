@@ -15,10 +15,11 @@ Kumpulan Author nya adalah sebagai berikut :
 
 # Perintah Query Yang dipakai :
 ```
+-- QUERY KELOMPOK 2 SISTEM BASIS DATA I B
 CREATE DATABASE kel2_db IF NOT EXISTS; 
 USE kel2_db;
 
--- DDL (DATA DEFINITION LANGUAGE)
+--// DDL (DATA DEFINITION LANGUAGE) //--
 CREATE TABLE students (
     students_id INT NOT NULL AUTO_INCREMENT,
     full_name VARCHAR(255) NOT NULL,
@@ -47,13 +48,16 @@ CREATE TABLE schedule (
 
 desc schedule;
 
--- DML (DATA MANIPULATION LANGUAGE)
+--// DML (DATA MANIPULATION LANGUAGE) //--
+
+-- Mengisi Matakuliah (Sample)
 INSERT INTO courses(NAME, duration)
 VALUE   ('Pemrograman Web B', 90),
         ('Praktikum Pemrograman Web B', 120),
         ('Sistem Basis Data B', 90),
         ('Praktikum Sistem Basis Data B', 120);
 
+-- Mengisi Record database students berdasarkan anggota Kelompok 2
 INSERT INTO students (full_name, address, major)
 VALUES  ('Muhammad Yusran Hardimas', 'Jl. Kebon Jeruk', 'Sistem Informasi'),
         ('Muhammad Ikram Hidayat', 'Jl. Mimpi Indah', 'Sistem Informasi'),
@@ -64,6 +68,7 @@ VALUES  ('Muhammad Yusran Hardimas', 'Jl. Kebon Jeruk', 'Sistem Informasi'),
         ('Muhammad Sofyan Daud Pujas', 'Jl. Air Kuning', 'Sistem Informasi'),
         ('Jihan Afifah Mirzani', 'Jl. Gigi Beruang', 'Sistem Informasi');
 
+-- Mengisi Record sesuai dengan jadwal yang telah ditentukan (Kasus tanggal dan waktu disamakan)
 INSERT INTO schedule (date, time, students_id, course_id)
 VALUES  ('2020-10-01', '08:00:00', 1, 1),
         ('2020-10-01', '08:00:00', 2, 1),
@@ -98,6 +103,7 @@ VALUES  ('2020-10-01', '08:00:00', 1, 1),
         ('2020-10-01', '08:00:00', 7, 4),
         ('2020-10-01', '08:00:00', 8, 4);
 
+-- Mengubah record dalam tabel schedule
 UPDATE schedule
 SET date = '2020-10-02', time = '16:00:00'
 WHERE course_id = 2;
@@ -115,13 +121,16 @@ SELECT * FROM students;
 SELECT * FROM courses;
 SELECT * FROM schedule;
 
--- DCL (DATA CONTROL LANGUAGE)
-SHOW TABLES;
--- Memberikan hak akses pada user bernama 'kel2'
-GRANT ALL PRIVILEGES ON kel2_db.* TO 'kel2'@'localhost' IDENTIFIED BY 'kel2';
+--// DCL (DATA CONTROL LANGUAGE) //--
 
--- Menghilangkan hak akses pada user
-REVOKE ALL PRIVILEGES ON kel2_db.* FROM 'kel2'@'localhost';
+-- Memberikan hak akses kepada user bernama 'kel2'
+GRANT ALL PRIVILEGES ON kel2_db.* TO 'kelompok2'@'localhost' IDENTIFIED BY 'kelompok2';
+
+-- Apabila ingin memberikan hanya beberapa akses
+GRANT SELECT, INSERT, UPDATE, DELETE ON kel2_db.* TO 'kelompok2'@'localhost' IDENTIFIED BY 'kelompok2';
+
+-- Menghilangkan hak akses pada user tadi
+REVOKE ALL PRIVILEGES ON kel2_db.* FROM 'kelompok2'@'localhost';
 
 -- Mengunci Tabel
 LOCK TABLES schedule WRITE;
@@ -129,7 +138,8 @@ LOCK TABLES schedule WRITE;
 -- Unlock Tabel
 UNLOCK TABLES;
 
--- Normalisasi Data
+--// Normalisasi Data //--
+
 -- 1. Membuat tabel baru
 CREATE TABLE schedule_summary (
     schedule_id INT NOT NULL AUTO_INCREMENT,
@@ -137,16 +147,16 @@ CREATE TABLE schedule_summary (
     course_name VARCHAR(255) NOT NULL,
     date DATE NOT NULL,
     time TIME NOT NULL,
-    PRIMARY KEY (schedule_id) -- bukan foreign key
+    PRIMARY KEY (schedule_id)
 );
 
--- 2. Memindahkan data dari tabel-tabel sebelumnya ke tabel schedule_summary (tabel baru)
+-- 2. Memindahkan data dari tabel-tabel sebelumnya
 INSERT INTO schedule_summary (students_name, course_name, date, time)
 SELECT students.full_name, courses.name, schedule.date, schedule.time
 FROM schedule
-JOIN students ON schedule.students_id = students.students_id -- Mirip Pemanggilan Foregin Key dari pembuatan tabel schedule (Line:26)
-JOIN courses ON schedule.course_id = courses.course_id; -- Sama
+JOIN students ON schedule.students_id = students.students_id
+JOIN courses ON schedule.course_id = courses.course_id;
 
-SELECT * FROM schedule_summary; -- Cek
-
+-- 3. Mengecek isi tabel baru
+SELECT * FROM schedule_summary;
 ```
