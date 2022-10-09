@@ -11,7 +11,7 @@ Kumpulan Author nya adalah sebagai berikut :
 - H071211047 JIHAN AFIFAH MIRZANI
 
 # Berikut adalah bentuk design database Kelompok II (ERD) :
-<img src="erd-database.jpeg">
+<img src="erd-database.png">
 
 # Perintah Query Yang dipakai :
 ```
