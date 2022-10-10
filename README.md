@@ -35,7 +35,7 @@ CREATE TABLE students (
     full_name VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
     major VARCHAR(255) NOT NULL,
-    PRIMARY KEY (students_id)
+    PRIMARY KEY (student_id)
 );
 ```
 
@@ -57,7 +57,7 @@ CREATE TABLE schedule (
     schedule_id INT NOT NULL AUTO_INCREMENT,
     date DATE NOT NULL,
     time TIME NOT NULL,
-    students_id INT NOT NULL,
+    student_id INT NOT NULL,
     course_id INT NOT NULL,
     PRIMARY KEY (schedule_id),
     FOREIGN KEY (student_id) REFERENCES students(student_id),
