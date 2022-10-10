@@ -31,7 +31,7 @@ USE kel2_db;
 
 ```
 CREATE TABLE students (
-    students_id INT NOT NULL AUTO_INCREMENT,
+    student_id INT NOT NULL AUTO_INCREMENT,
     full_name VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
     major VARCHAR(255) NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE schedule (
     students_id INT NOT NULL,
     course_id INT NOT NULL,
     PRIMARY KEY (schedule_id),
-    FOREIGN KEY (students_id) REFERENCES students(students_id),
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
     FOREIGN KEY (course_id) REFERENCES courses(course_id)
 );
 desc schedule;
@@ -97,7 +97,7 @@ Maka isi tabel `students` akan menjadi seperti berikut:
 <br><br><img src="assets/TableStudent.png"><br><br> 3. Mengisi Record sesuai dengan jadwal yang telah ditentukan (Kasus tanggal dan waktu disamakan)
 
 ```
-INSERT INTO schedule (date, time, students_id, course_id)
+INSERT INTO schedule (date, time, student_id, course_id)
 VALUES  ('2020-10-01', '08:00:00', 1, 1),
         ('2020-10-01', '08:00:00', 2, 1),
         ('2020-10-01', '08:00:00', 3, 1),
