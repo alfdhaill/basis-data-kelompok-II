@@ -63,6 +63,8 @@ VALUE   ('Pemrograman Web B', 90),
         ('Sistem Basis Data B', 90),
         ('Praktikum Sistem Basis Data B', 120);
 ```
+Maka isi tabel `courses` akan menjadi seperti berikut:
+<br><img src="assets/TableCourse.png"><br>
 2. Mengisi Record database students berdasarkan anggota Kelompok 2
 ```
 INSERT INTO students (full_name, address, major)
@@ -75,7 +77,8 @@ VALUES  ('Muhammad Yusran Hardimas', 'Jl. Kebon Jeruk', 'Sistem Informasi'),
         ('Muhammad Sofyan Daud Pujas', 'Jl. Air Kuning', 'Sistem Informasi'),
         ('Jihan Afifah Mirzani', 'Jl. Gigi Beruang', 'Sistem Informasi');
 ```
-
+Maka isi tabel `students` akan menjadi seperti berikut:
+<br><img src="assets/TableStudent.png"><br>
 3. Mengisi Record sesuai dengan jadwal yang telah ditentukan (Kasus tanggal dan waktu disamakan)
 ```
 INSERT INTO schedule (date, time, students_id, course_id)
@@ -112,6 +115,8 @@ VALUES  ('2020-10-01', '08:00:00', 1, 1),
         ('2020-10-01', '08:00:00', 7, 4),
         ('2020-10-01', '08:00:00', 8, 4);
 ```
+Maka isi tabel `schedule` akan menjadi seperti berikut:
+<br><img src="assets/TableSchedule.png"><br>
 4. Mengubah record dalam tabel schedule
 ```
 UPDATE schedule
@@ -132,6 +137,7 @@ SELECT * FROM students;
 SELECT * FROM courses;
 SELECT * FROM schedule;
 ```
+_Isi tabel-tabelnya sesuai gambar yang tertera diatas_
 
 **DCL (DATA CONTROL LANGUAGE)**
 1. Memberikan hak akses kepada user bernama 'kel2'
@@ -168,7 +174,7 @@ CREATE TABLE schedule_summary (
     PRIMARY KEY (schedule_id)
 );
 ```
-2. Memindahkan data dari tabel-tabel sebelumnya
+2. Mengambil record dari tabel-tabel sebelumnya
 ```
 INSERT INTO schedule_summary (students_name, course_name, date, time)
 SELECT students.full_name, courses.name, schedule.date, schedule.time
@@ -180,3 +186,5 @@ JOIN courses ON schedule.course_id = courses.course_id;
 ```
 SELECT * FROM schedule_summary;
 ```
+Maka tabel `schedule_summary` akan menjadi seperti berikut:
+<br><img src="assets/TableSummary.png"><br>
