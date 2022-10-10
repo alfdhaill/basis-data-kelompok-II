@@ -54,16 +54,17 @@ CREATE TABLE schedule (
 desc schedule;
 ```
 
-DML (DATA MANIPULATION LANGUAGE)
+**DML (DATA MANIPULATION LANGUAGE)**
+1. Mengisi Matakuliah (Sample)
 ```
--- Mengisi Matakuliah (Sample)
 INSERT INTO courses(NAME, duration)
 VALUE   ('Pemrograman Web B', 90),
         ('Praktikum Pemrograman Web B', 120),
         ('Sistem Basis Data B', 90),
         ('Praktikum Sistem Basis Data B', 120);
-
--- Mengisi Record database students berdasarkan anggota Kelompok 2
+```
+2. Mengisi Record database students berdasarkan anggota Kelompok 2
+```
 INSERT INTO students (full_name, address, major)
 VALUES  ('Muhammad Yusran Hardimas', 'Jl. Kebon Jeruk', 'Sistem Informasi'),
         ('Muhammad Ikram Hidayat', 'Jl. Mimpi Indah', 'Sistem Informasi'),
@@ -73,8 +74,9 @@ VALUES  ('Muhammad Yusran Hardimas', 'Jl. Kebon Jeruk', 'Sistem Informasi'),
         ('Herdiangga Pratama', 'Jl. Seribu jalan', 'Sistem Informasi'),
         ('Muhammad Sofyan Daud Pujas', 'Jl. Air Kuning', 'Sistem Informasi'),
         ('Jihan Afifah Mirzani', 'Jl. Gigi Beruang', 'Sistem Informasi');
+```
 
--- Mengisi Record sesuai dengan jadwal yang telah ditentukan (Kasus tanggal dan waktu disamakan)
+3. Mengisi Record sesuai dengan jadwal yang telah ditentukan (Kasus tanggal dan waktu disamakan)
 INSERT INTO schedule (date, time, students_id, course_id)
 VALUES  ('2020-10-01', '08:00:00', 1, 1),
         ('2020-10-01', '08:00:00', 2, 1),
