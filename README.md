@@ -198,7 +198,7 @@ UNLOCK TABLES;
 ```
 CREATE TABLE schedule-summary (
     schedule_id INT NOT NULL AUTO_INCREMENT,
-    students_name VARCHAR(255) NOT NULL,
+    student_name VARCHAR(255) NOT NULL,
     course_name VARCHAR(255) NOT NULL,
     date DATE NOT NULL,
     time TIME NOT NULL,
@@ -209,10 +209,10 @@ CREATE TABLE schedule-summary (
 2. Mengambil record dari tabel-tabel sebelumnya
 
 ```
-INSERT INTO schedule-summary (students_name, course_name, date, time)
+INSERT INTO schedule-summary (student_name, course_name, date, time)
 SELECT students.full_name, courses.name, schedule.date, schedule.time
 FROM schedule
-JOIN students ON schedule.students_id = students.students_id
+JOIN students ON schedule.student_id = students.student_id
 JOIN courses ON schedule.course_id = courses.course_id;
 ```
 
