@@ -133,12 +133,13 @@ SELECT * FROM courses;
 SELECT * FROM schedule;
 ```
 
-DCL (DATA CONTROL LANGUAGE)
+**DCL (DATA CONTROL LANGUAGE)**
+1. Memberikan hak akses kepada user bernama 'kel2'
 ```
--- Memberikan hak akses kepada user bernama 'kel2'
 GRANT ALL PRIVILEGES ON kel2_db.* TO 'kelompok2'@'localhost' IDENTIFIED BY 'kelompok2';
+```
 
--- Apabila ingin memberikan hanya beberapa akses
+2. Apabila ingin memberikan hanya beberapa akses
 GRANT SELECT, INSERT, UPDATE, DELETE ON kel2_db.* TO 'kelompok2'@'localhost' IDENTIFIED BY 'kelompok2';
 
 -- Menghilangkan hak akses pada user tadi
