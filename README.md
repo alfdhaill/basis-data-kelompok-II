@@ -161,7 +161,7 @@ _Isi tabel-tabelnya sesuai gambar yang tertera diatas_
 
 **DCL (DATA CONTROL LANGUAGE)**
 
-1. Memberikan hak akses kepada user bernama 'kel2'
+1. Memberikan hak akses kepada user bernama 'kelompok2'
 
 ```
 GRANT ALL PRIVILEGES ON kel2_db.* TO 'kelompok2'@'localhost' IDENTIFIED BY 'kelompok2';
