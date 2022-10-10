@@ -77,6 +77,7 @@ VALUES  ('Muhammad Yusran Hardimas', 'Jl. Kebon Jeruk', 'Sistem Informasi'),
 ```
 
 3. Mengisi Record sesuai dengan jadwal yang telah ditentukan (Kasus tanggal dan waktu disamakan)
+```
 INSERT INTO schedule (date, time, students_id, course_id)
 VALUES  ('2020-10-01', '08:00:00', 1, 1),
         ('2020-10-01', '08:00:00', 2, 1),
@@ -110,8 +111,9 @@ VALUES  ('2020-10-01', '08:00:00', 1, 1),
         ('2020-10-01', '08:00:00', 6, 4),
         ('2020-10-01', '08:00:00', 7, 4),
         ('2020-10-01', '08:00:00', 8, 4);
-
--- Mengubah record dalam tabel schedule
+```
+4. Mengubah record dalam tabel schedule
+```
 UPDATE schedule
 SET date = '2020-10-02', time = '16:00:00'
 WHERE course_id = 2;
@@ -123,8 +125,9 @@ WHERE course_id = 3;
 UPDATE schedule
 SET date = '2020-10-04', time = '12:00:00'
 WHERE course_id = 4;
-
--- Mengecek isi tabel-tabelnya
+```
+5. Mengecek isi tabel-tabelnya
+```
 SELECT * FROM students;
 SELECT * FROM courses;
 SELECT * FROM schedule;
