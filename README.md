@@ -14,12 +14,14 @@ Kumpulan Author nya adalah sebagai berikut :
 <img src="erd-database.png">
 
 # Perintah Query Yang dipakai :
+**DDL (DATA DEFINITION LANGUAGE)**
+1. Membuat database baru bernama kel2_db
 ```
--- QUERY KELOMPOK 2 SISTEM BASIS DATA I B
 CREATE DATABASE kel2_db IF NOT EXISTS; 
 USE kel2_db;
-
---// DDL (DATA DEFINITION LANGUAGE) //--
+```
+2. Membuat tabel students
+```
 CREATE TABLE students (
     students_id INT NOT NULL AUTO_INCREMENT,
     full_name VARCHAR(255) NOT NULL,
@@ -27,7 +29,8 @@ CREATE TABLE students (
     major VARCHAR(255) NOT NULL,
     PRIMARY KEY (students_id)
 );
-
+```
+3. 
 CREATE TABLE courses (
 	course_id INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(255) NOT NULL,
@@ -47,9 +50,10 @@ CREATE TABLE schedule (
 );
 
 desc schedule;
+```
 
---// DML (DATA MANIPULATION LANGUAGE) //--
-
+DML (DATA MANIPULATION LANGUAGE)
+```
 -- Mengisi Matakuliah (Sample)
 INSERT INTO courses(NAME, duration)
 VALUE   ('Pemrograman Web B', 90),
@@ -120,9 +124,10 @@ WHERE course_id = 4;
 SELECT * FROM students;
 SELECT * FROM courses;
 SELECT * FROM schedule;
+```
 
---// DCL (DATA CONTROL LANGUAGE) //--
-
+DCL (DATA CONTROL LANGUAGE)
+```
 -- Memberikan hak akses kepada user bernama 'kel2'
 GRANT ALL PRIVILEGES ON kel2_db.* TO 'kelompok2'@'localhost' IDENTIFIED BY 'kelompok2';
 
@@ -137,10 +142,11 @@ LOCK TABLES schedule WRITE;
 
 -- Unlock Tabel
 UNLOCK TABLES;
+```
 
---// Normalisasi Data //--
-
--- 1. Membuat tabel baru
+Tabel Summary
+1. Membuat tabel baru
+```
 CREATE TABLE schedule_summary (
     schedule_id INT NOT NULL AUTO_INCREMENT,
     students_name VARCHAR(255) NOT NULL,
@@ -149,14 +155,16 @@ CREATE TABLE schedule_summary (
     time TIME NOT NULL,
     PRIMARY KEY (schedule_id)
 );
-
--- 2. Memindahkan data dari tabel-tabel sebelumnya
+```
+2. Memindahkan data dari tabel-tabel sebelumnya
+```
 INSERT INTO schedule_summary (students_name, course_name, date, time)
 SELECT students.full_name, courses.name, schedule.date, schedule.time
 FROM schedule
 JOIN students ON schedule.students_id = students.students_id
 JOIN courses ON schedule.course_id = courses.course_id;
-
--- 3. Mengecek isi tabel baru
+```
+3. Mengecek isi tabel baru
+```
 SELECT * FROM schedule_summary;
 ```
