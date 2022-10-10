@@ -224,3 +224,6 @@ SELECT * FROM schedule_summary;
 
 Maka tabel `schedule_summary` akan menjadi seperti berikut:
 <br><img src="assets/TableSummary.png"><br>
+<br><img src="assets/TableSummary.png"><br>
+dijadikan
+<br><br><img src="assets/TableSummary.png"><br><br>
