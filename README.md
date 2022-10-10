@@ -14,12 +14,14 @@ Kumpulan Author nya adalah sebagai berikut :
 <img src="erd-database.png">
 
 # Perintah Query Yang dipakai :
+**DDL (DATA DEFINITION LANGUAGE)**
+1. Membuat database baru bernama kel2_db
 ```
--- QUERY KELOMPOK 2 SISTEM BASIS DATA I B
 CREATE DATABASE kel2_db IF NOT EXISTS; 
 USE kel2_db;
-
---// DDL (DATA DEFINITION LANGUAGE) //--
+```
+2. Membuat tabel students
+```
 CREATE TABLE students (
     students_id INT NOT NULL AUTO_INCREMENT,
     full_name VARCHAR(255) NOT NULL,
@@ -27,14 +29,18 @@ CREATE TABLE students (
     major VARCHAR(255) NOT NULL,
     PRIMARY KEY (students_id)
 );
-
+```
+3. Membuat tabel courses
+```
 CREATE TABLE courses (
 	course_id INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(255) NOT NULL,
 	duration INT NOT NULL,
 	PRIMARY KEY (course_id)
 );
-
+```
+4. Membuat tabel schedule
+```
 CREATE TABLE schedule (
     schedule_id INT NOT NULL AUTO_INCREMENT,
     date DATE NOT NULL,
@@ -45,19 +51,20 @@ CREATE TABLE schedule (
     FOREIGN KEY (students_id) REFERENCES students(students_id),
     FOREIGN KEY (course_id) REFERENCES courses(course_id)
 );
-
 desc schedule;
+```
 
---// DML (DATA MANIPULATION LANGUAGE) //--
-
--- Mengisi Matakuliah (Sample)
+**DML (DATA MANIPULATION LANGUAGE)**
+1. Mengisi Matakuliah (Sample)
+```
 INSERT INTO courses(NAME, duration)
 VALUE   ('Pemrograman Web B', 90),
         ('Praktikum Pemrograman Web B', 120),
         ('Sistem Basis Data B', 90),
         ('Praktikum Sistem Basis Data B', 120);
-
--- Mengisi Record database students berdasarkan anggota Kelompok 2
+```
+2. Mengisi Record database students berdasarkan anggota Kelompok 2
+```
 INSERT INTO students (full_name, address, major)
 VALUES  ('Muhammad Yusran Hardimas', 'Jl. Kebon Jeruk', 'Sistem Informasi'),
         ('Muhammad Ikram Hidayat', 'Jl. Mimpi Indah', 'Sistem Informasi'),
@@ -67,8 +74,10 @@ VALUES  ('Muhammad Yusran Hardimas', 'Jl. Kebon Jeruk', 'Sistem Informasi'),
         ('Herdiangga Pratama', 'Jl. Seribu jalan', 'Sistem Informasi'),
         ('Muhammad Sofyan Daud Pujas', 'Jl. Air Kuning', 'Sistem Informasi'),
         ('Jihan Afifah Mirzani', 'Jl. Gigi Beruang', 'Sistem Informasi');
+```
 
--- Mengisi Record sesuai dengan jadwal yang telah ditentukan (Kasus tanggal dan waktu disamakan)
+3. Mengisi Record sesuai dengan jadwal yang telah ditentukan (Kasus tanggal dan waktu disamakan)
+```
 INSERT INTO schedule (date, time, students_id, course_id)
 VALUES  ('2020-10-01', '08:00:00', 1, 1),
         ('2020-10-01', '08:00:00', 2, 1),
@@ -102,8 +111,9 @@ VALUES  ('2020-10-01', '08:00:00', 1, 1),
         ('2020-10-01', '08:00:00', 6, 4),
         ('2020-10-01', '08:00:00', 7, 4),
         ('2020-10-01', '08:00:00', 8, 4);
-
--- Mengubah record dalam tabel schedule
+```
+4. Mengubah record dalam tabel schedule
+```
 UPDATE schedule
 SET date = '2020-10-02', time = '16:00:00'
 WHERE course_id = 2;
@@ -115,32 +125,40 @@ WHERE course_id = 3;
 UPDATE schedule
 SET date = '2020-10-04', time = '12:00:00'
 WHERE course_id = 4;
-
--- Mengecek isi tabel-tabelnya
+```
+5. Mengecek isi tabel-tabelnya
+```
 SELECT * FROM students;
 SELECT * FROM courses;
 SELECT * FROM schedule;
+```
 
---// DCL (DATA CONTROL LANGUAGE) //--
-
--- Memberikan hak akses kepada user bernama 'kel2'
+**DCL (DATA CONTROL LANGUAGE)**
+1. Memberikan hak akses kepada user bernama 'kel2'
+```
 GRANT ALL PRIVILEGES ON kel2_db.* TO 'kelompok2'@'localhost' IDENTIFIED BY 'kelompok2';
+```
 
--- Apabila ingin memberikan hanya beberapa akses
+2. Apabila ingin memberikan hanya beberapa akses
+```
 GRANT SELECT, INSERT, UPDATE, DELETE ON kel2_db.* TO 'kelompok2'@'localhost' IDENTIFIED BY 'kelompok2';
-
--- Menghilangkan hak akses pada user tadi
+```
+3. Menghilangkan hak akses pada user tadi
+```
 REVOKE ALL PRIVILEGES ON kel2_db.* FROM 'kelompok2'@'localhost';
-
--- Mengunci Tabel
+```
+4. Mengunci Tabel
+```
 LOCK TABLES schedule WRITE;
-
--- Unlock Tabel
+```
+5. Unlock Tabel
+```
 UNLOCK TABLES;
+```
 
---// Normalisasi Data //--
-
--- 1. Membuat tabel baru
+**Tabel Summary**
+1. Membuat tabel baru
+```
 CREATE TABLE schedule_summary (
     schedule_id INT NOT NULL AUTO_INCREMENT,
     students_name VARCHAR(255) NOT NULL,
@@ -149,14 +167,16 @@ CREATE TABLE schedule_summary (
     time TIME NOT NULL,
     PRIMARY KEY (schedule_id)
 );
-
--- 2. Memindahkan data dari tabel-tabel sebelumnya
+```
+2. Memindahkan data dari tabel-tabel sebelumnya
+```
 INSERT INTO schedule_summary (students_name, course_name, date, time)
 SELECT students.full_name, courses.name, schedule.date, schedule.time
 FROM schedule
 JOIN students ON schedule.students_id = students.students_id
 JOIN courses ON schedule.course_id = courses.course_id;
-
--- 3. Mengecek isi tabel baru
+```
+3. Mengecek isi tabel baru
+```
 SELECT * FROM schedule_summary;
 ```
