@@ -106,7 +106,7 @@ SELECT * FROM schedule;
 
 --// DCL (DATA CONTROL LANGUAGE) //--
 
--- Memberikan hak akses kepada user bernama 'kel2'
+-- Memberikan hak akses kepada user bernama 'kelompok2'
 GRANT ALL PRIVILEGES ON kel2_db.* TO 'kelompok2'@'localhost' IDENTIFIED BY 'kelompok2';
 
 -- Apabila ingin memberikan hanya beberapa akses
