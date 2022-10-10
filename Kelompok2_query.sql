@@ -46,7 +46,7 @@ VALUES  ('Muhammad Yusran Hardimas', 'Jl. Kebon Jeruk', 'Sistem Informasi'),
         ('Muhammad Ikram Hidayat', 'Jl. Mimpi Indah', 'Sistem Informasi'),
         ('Muhammad Al Fudhail', 'Jl. Di BTP', 'Sistem Informasi'),
         ('Muchtar Adam Al-Hamid', 'Jl. Tikus', 'Sistem Informasi'),
-        ('Muhammad Hudri Perdana Hutba', 'Jl. Tamalanrea', 'Sistem Informasi'),
+        ('Muh Hudri Perdana Hutba', 'Jl. Tamalanrea', 'Sistem Informasi'),
         ('Herdiangga Pratama', 'Jl. Seribu jalan', 'Sistem Informasi'),
         ('Muhammad Sofyan Daud Pujas', 'Jl. Air Kuning', 'Sistem Informasi'),
         ('Jihan Afifah Mirzani', 'Jl. Gigi Beruang', 'Sistem Informasi');
