@@ -64,7 +64,7 @@ VALUE   ('Pemrograman Web B', 90),
         ('Praktikum Sistem Basis Data B', 120);
 ```
 Maka isi tabel `courses` akan menjadi seperti berikut:
-<br><img src="assets/TableCourse.png"><br>
+<br><br><img src="assets/TableCourse.png"><br><br>
 2. Mengisi Record database students berdasarkan anggota Kelompok 2
 ```
 INSERT INTO students (full_name, address, major)
@@ -78,7 +78,7 @@ VALUES  ('Muhammad Yusran Hardimas', 'Jl. Kebon Jeruk', 'Sistem Informasi'),
         ('Jihan Afifah Mirzani', 'Jl. Gigi Beruang', 'Sistem Informasi');
 ```
 Maka isi tabel `students` akan menjadi seperti berikut:
-<br><img src="assets/TableStudent.png"><br>
+<br><br><img src="assets/TableStudent.png"><br><br>
 3. Mengisi Record sesuai dengan jadwal yang telah ditentukan (Kasus tanggal dan waktu disamakan)
 ```
 INSERT INTO schedule (date, time, students_id, course_id)
@@ -116,7 +116,7 @@ VALUES  ('2020-10-01', '08:00:00', 1, 1),
         ('2020-10-01', '08:00:00', 8, 4);
 ```
 Maka isi tabel `schedule` akan menjadi seperti berikut:
-<br><img src="assets/TableSchedule.png"><br>
+<br><br><img src="assets/TableSchedule.png"><br><br>
 4. Mengubah record dalam tabel schedule
 ```
 UPDATE schedule
