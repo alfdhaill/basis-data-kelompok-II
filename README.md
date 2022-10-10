@@ -63,6 +63,8 @@ VALUE   ('Pemrograman Web B', 90),
         ('Sistem Basis Data B', 90),
         ('Praktikum Sistem Basis Data B', 120);
 ```
+Maka isi tabel courses akan menjadi seperti berikut:
+<img src="assets/TableCourse.png">
 2. Mengisi Record database students berdasarkan anggota Kelompok 2
 ```
 INSERT INTO students (full_name, address, major)
