@@ -196,7 +196,7 @@ UNLOCK TABLES;
 1. Membuat tabel baru
 
 ```
-CREATE TABLE schedule_summary (
+CREATE TABLE schedule-summary (
     schedule_id INT NOT NULL AUTO_INCREMENT,
     students_name VARCHAR(255) NOT NULL,
     course_name VARCHAR(255) NOT NULL,
@@ -209,7 +209,7 @@ CREATE TABLE schedule_summary (
 2. Mengambil record dari tabel-tabel sebelumnya
 
 ```
-INSERT INTO schedule_summary (students_name, course_name, date, time)
+INSERT INTO schedule-summary (students_name, course_name, date, time)
 SELECT students.full_name, courses.name, schedule.date, schedule.time
 FROM schedule
 JOIN students ON schedule.students_id = students.students_id
@@ -219,8 +219,8 @@ JOIN courses ON schedule.course_id = courses.course_id;
 3. Mengecek isi tabel baru
 
 ```
-SELECT * FROM schedule_summary;
+SELECT * FROM schedule-summary;
 ```
 
-Maka tabel `schedule_summary` akan menjadi seperti berikut:
+Maka tabel `schedule-summary` akan menjadi seperti berikut:
 <br><br><img src="assets/TableSummary.png"><br><br>
