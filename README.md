@@ -14,7 +14,7 @@ Kumpulan Author nya adalah sebagai berikut :
 
 # Bentuk design database Kelompok II (ERD) :
 
-<img src="erd-database.png">
+<img src="assets/design-database.jpg">
 
 # Perintah Query Yang dipakai :
 
