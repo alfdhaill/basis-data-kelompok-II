@@ -140,19 +140,23 @@ GRANT ALL PRIVILEGES ON kel2_db.* TO 'kelompok2'@'localhost' IDENTIFIED BY 'kelo
 ```
 
 2. Apabila ingin memberikan hanya beberapa akses
+```
 GRANT SELECT, INSERT, UPDATE, DELETE ON kel2_db.* TO 'kelompok2'@'localhost' IDENTIFIED BY 'kelompok2';
-
--- Menghilangkan hak akses pada user tadi
+```
+3. Menghilangkan hak akses pada user tadi
+```
 REVOKE ALL PRIVILEGES ON kel2_db.* FROM 'kelompok2'@'localhost';
-
--- Mengunci Tabel
+```
+4. Mengunci Tabel
+```
 LOCK TABLES schedule WRITE;
-
--- Unlock Tabel
+```
+5. Unlock Tabel
+```
 UNLOCK TABLES;
 ```
 
-Tabel Summary
+**Tabel Summary**
 1. Membuat tabel baru
 ```
 CREATE TABLE schedule_summary (
