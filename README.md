@@ -30,14 +30,17 @@ CREATE TABLE students (
     PRIMARY KEY (students_id)
 );
 ```
-3. 
+3. Membuat tabel courses
+```
 CREATE TABLE courses (
 	course_id INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(255) NOT NULL,
 	duration INT NOT NULL,
 	PRIMARY KEY (course_id)
 );
-
+```
+4. Membuat tabel schedule
+```
 CREATE TABLE schedule (
     schedule_id INT NOT NULL AUTO_INCREMENT,
     date DATE NOT NULL,
@@ -48,7 +51,6 @@ CREATE TABLE schedule (
     FOREIGN KEY (students_id) REFERENCES students(students_id),
     FOREIGN KEY (course_id) REFERENCES courses(course_id)
 );
-
 desc schedule;
 ```
 
