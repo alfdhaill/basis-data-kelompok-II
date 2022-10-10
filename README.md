@@ -31,11 +31,11 @@ USE kel2_db;
 
 ```
 CREATE TABLE students (
-    students_id INT NOT NULL AUTO_INCREMENT,
+    student_id INT NOT NULL AUTO_INCREMENT,
     full_name VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
     major VARCHAR(255) NOT NULL,
-    PRIMARY KEY (students_id)
+    PRIMARY KEY (student_id)
 );
 ```
 
@@ -57,10 +57,10 @@ CREATE TABLE schedule (
     schedule_id INT NOT NULL AUTO_INCREMENT,
     date DATE NOT NULL,
     time TIME NOT NULL,
-    students_id INT NOT NULL,
+    student_id INT NOT NULL,
     course_id INT NOT NULL,
     PRIMARY KEY (schedule_id),
-    FOREIGN KEY (students_id) REFERENCES students(students_id),
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
     FOREIGN KEY (course_id) REFERENCES courses(course_id)
 );
 desc schedule;
@@ -97,7 +97,7 @@ Maka isi tabel `students` akan menjadi seperti berikut:
 <br><br><img src="assets/TableStudent.png"><br><br> 3. Mengisi Record sesuai dengan jadwal yang telah ditentukan (Kasus tanggal dan waktu disamakan)
 
 ```
-INSERT INTO schedule (date, time, students_id, course_id)
+INSERT INTO schedule (date, time, student_id, course_id)
 VALUES  ('2020-10-01', '08:00:00', 1, 1),
         ('2020-10-01', '08:00:00', 2, 1),
         ('2020-10-01', '08:00:00', 3, 1),
@@ -196,9 +196,9 @@ UNLOCK TABLES;
 1. Membuat tabel baru
 
 ```
-CREATE TABLE schedule_summary (
+CREATE TABLE schedule-summary (
     schedule_id INT NOT NULL AUTO_INCREMENT,
-    students_name VARCHAR(255) NOT NULL,
+    student_name VARCHAR(255) NOT NULL,
     course_name VARCHAR(255) NOT NULL,
     date DATE NOT NULL,
     time TIME NOT NULL,
@@ -209,18 +209,18 @@ CREATE TABLE schedule_summary (
 2. Mengambil record dari tabel-tabel sebelumnya
 
 ```
-INSERT INTO schedule_summary (students_name, course_name, date, time)
+INSERT INTO schedule-summary (student_name, course_name, date, time)
 SELECT students.full_name, courses.name, schedule.date, schedule.time
 FROM schedule
-JOIN students ON schedule.students_id = students.students_id
+JOIN students ON schedule.student_id = students.student_id
 JOIN courses ON schedule.course_id = courses.course_id;
 ```
 
 3. Mengecek isi tabel baru
 
 ```
-SELECT * FROM schedule_summary;
+SELECT * FROM schedule-summary;
 ```
 
-Maka tabel `schedule_summary` akan menjadi seperti berikut:
+Maka tabel `schedule-summary` akan menjadi seperti berikut:
 <br><br><img src="assets/TableSummary.png"><br><br>
